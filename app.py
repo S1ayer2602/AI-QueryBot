@@ -6,7 +6,6 @@ import streamlit as st
 # import openai
 # from langchain_openai import OpenAIEmbeddings
 
-# OPENAI_API_KEY="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"
 # openai.api_key=OPENAI_API_KEY
 # embedding_model = OpenAIEmbeddings(model="text-embedding-3-small",openai_api_key=openai.api_key)
 # chroma_client = chromadb.Client()
