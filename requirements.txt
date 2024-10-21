@@ -1,0 +1,11 @@
+langchain
+tiktoken
+pypdf
+langchain-community
+accelerate
+faiss-gpu
+sentence_transformers==2.2.2
+transformers 
+InstructorEmbedding 
+bitsandbytes
+gradio
