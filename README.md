@@ -8,13 +8,11 @@
 2. [Features](#features)
 3. [Technologies](#technologies)
 4. [Installation](#installation)
-5. [Usage](#usage)
-   - [Launching the Gradio Chat UI](#launching-the-gradio-chat-ui)
-6. [How It Works](#how-it-works)
+5. [How It Works](#how-it-works)
+6. [RAG Overview](#rag-overview)
 7. [Dataset](#dataset)
-8. [Customization](#customization)
 9. [Contributing](#contributing)
-10. [License](#license)
+
 
 ## Overview
 
@@ -48,3 +46,29 @@ To set up **AI-QueryBot** locally, follow these steps:
 ```bash
 git clone https://github.com/S1ayer2602/AI-QueryBot.git
 cd AI-QueryBot
+```
+### 2. Create a Virtual Environment
+```bash
+python3 -m venv venv
+source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+```
+### 3. Install Dependencies
+```bash
+pip install -r requirements.txt
+
+```
+
+## How It Works
+- **Question Processing**: The user submits a question, which is processed by the language model.
+- **Document Retrieval**: A search is performed over the document corpus using FAISS (or another retrieval mechanism), retrieving the most relevant documents related to the question.
+- **Answer Generation**: The model generates a response by combining the user query with the retrieved documents. This is where RAG (Retrieval-Augmented Generation) comes into play.
+- **Interactive UI**: The answer is displayed in the chat UI, along with any relevant supporting documents.
+## RAG Overview
+- **Retrieval Component**: FAISS or another vector store is used to fetch relevant documents from the document index based on the query.
+- **Generation Component**: A pre-trained LLM is used to generate a response, conditioned on the query and the retrieved documents.
+
+## Dataset
+The current version uses publicly available datasets (e.g., from Wikipedia or similar sources), but it is fully customizable. You can upload your own documents for domain-specific QA.
+
+## Contributing
+Contributions are welcome! If you have ideas for new features or find bugs, feel free to open an issue or submit a pull request.
