@@ -16,7 +16,13 @@
 
 ## Overview
 
-The goal of **AI-QueryBot** is to answer user queries by combining the strengths of pre-trained language models and a retrieval mechanism. The model first retrieves relevant documents and then generates a response by conditioning on both the query and the retrieved documents. This enables more accurate and context-aware responses.
+This project is a Query BOT that uses Retrieval-Augmented Generation (RAG) techniques to handle natural language queries with accuracy and context-awareness. It’s built around Llama 2, accessed through the Hugging Face pipeline. To keep it lightweight, the model is quantized to 4-bit, which means it uses significantly less memory without sacrificing much in performance. This way, the BOT can generate flexible and coherent responses even on resource-limited hardware, and settings like temperature and top-p sampling are adjustable to refine how the BOT responds.
+
+To make large documents easily searchable, we split them into smaller, manageable chunks using LangChain’s RecursiveCharacterTextSplitter. Each chunk is then turned into a vector with sentence-transformers and stored in a FAISS vector store, a high-speed vector database that makes it quick to search for similar text. This vector database serves as the BOT’s knowledge base, allowing it to retrieve relevant information in response to each query, which keeps responses precise and relevant.
+
+At the heart of the BOT’s functionality is LangChain’s RetrievalQA chain, which ties together the retrieval and response generation steps. The FAISS vector store retrieves relevant chunks, and Maximum Marginal Relevance (MMR) is applied to ensure the returned chunks are diverse, avoiding redundant information. This setup ensures that the BOT’s answers are not only accurate but also well-rounded, drawing from a broad context to address the query comprehensively.
+
+Finally, the BOT’s output is carefully formatted to improve readability and usability. Each answer is structured for clarity, with text wrapping to maintain readability, and it includes source information, listing document names and page numbers so users can trace where the information came from. The BOT also shows how long it took to generate the answer, making the response more transparent. This combination of retrieval, generation, and formatting makes the Query BOT an efficient and dependable tool for answering complex questions in knowledge-heavy domains.
 
 ## Features
 
